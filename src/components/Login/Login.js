@@ -6,42 +6,49 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default class Login extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.header}>LOGIN</Text>
+export default function Login({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.header}>LOGIN</Text>
 
-          <View style={styles.formCard}>
-            <TextInput placeholder="Username" style={styles.txtInput} />
-            <TextInput placeholder="Password" style={styles.txtInput} />
+        <View style={styles.formCard}>
+          <TextInput placeholder="Username" style={styles.txtInput} />
+          <TextInput placeholder="Password" style={styles.txtInput} />
 
-            <TouchableOpacity style={styles.btnLogin}>
-              <Text style={styles.btnLoginText}>LOGIN</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.btnLogin} onPress={() => {
+              navigation.navigate("Home");
+            }}>
+            <Text style={styles.btnLoginText}>LOGIN</Text>
+          </TouchableOpacity>
 
-          <View style={styles.social}>
-            <TouchableOpacity style={styles.btnSocialG}>
-              <Text style={styles.btnSocialText}>G</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btnRegister}
+            onPress={() => {
+              navigation.navigate("Signup");
+            }}
+          >
+            <Text style={styles.btnLoginText}>REGISTER</Text>
+          </TouchableOpacity>
+        </View>
 
-            <TouchableOpacity style={styles.btnSocialF}>
-              <Text style={styles.btnSocialText}>F</Text>
-              <FontAwesomeIcon icon={"faLock"} size={40} color={"blue"} />
-            </TouchableOpacity>
+        <View style={styles.social}>
+          <TouchableOpacity style={styles.btnSocialG}>
+            <Text style={styles.btnSocialText}>G</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btnSocialT}>
-              <Text style={styles.btnSocialText}>T</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.btnSocialF}>
+            <Text style={styles.btnSocialText}>F</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.btnSocialT}>
+            <Text style={styles.btnSocialText}>T</Text>
+          </TouchableOpacity>
         </View>
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -70,6 +77,15 @@ const styles = StyleSheet.create({
     height: 30,
     justifyContent: "center",
     borderRadius: 5,
+  },
+  btnRegister: {
+    backgroundColor: "green",
+    width: 300,
+    alignItems: "center",
+    height: 30,
+    justifyContent: "center",
+    borderRadius: 5,
+    marginTop: 5,
   },
   txtInput: {
     width: 300,
